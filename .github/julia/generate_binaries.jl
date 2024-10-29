@@ -49,7 +49,7 @@ for (platform, libdir, ext) in platforms
 
       # Copy the license of each dependency
       for folder in readdir("products/$platform/deps/licenses")
-        if readdir("products/$platform/deps/licenses/$folder") != String[]
+        if folder != "ASL"
           cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder")
         end
       end
@@ -71,15 +71,15 @@ for (platform, libdir, ext) in platforms
 
       # Create a folder with the version number of the package
       mkdir("$(package)_binaries.$version2")
-      for folder in ("share", "modules", "lib", "bin")
+      for folder in ("share", "lib", "bin")
         cp(folder, "$(package)_binaries.$version2/$folder")
       end
 
       cd("$(package)_binaries.$version2")
       if ext == "dll"
-        run(`zip -r --symlinks ../../../$(package)_binaries.$version2.$platform.zip share modules lib bin`)
+        run(`zip -r --symlinks ../../../$(package)_binaries.$version2.$platform.zip share lib bin`)
       else
-        run(`tar -czf ../../../$(package)_binaries.$version2.$platform.tar.gz share modules lib bin`)
+        run(`tar -czf ../../../$(package)_binaries.$version2.$platform.tar.gz share lib bin`)
       end
       cd("../../..")
 
