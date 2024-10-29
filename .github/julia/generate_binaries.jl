@@ -49,9 +49,7 @@ for (platform, libdir, ext) in platforms
 
       # Copy the license of each dependency
       for folder in readdir("products/$platform/deps/licenses")
-        if folder != "ASL"
-          cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder")
-        end
+        cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder", force=true)
       end
       rm("products/$platform/deps/licenses", recursive=true)
 
