@@ -8,7 +8,7 @@ version = VersionNumber(ENV["UNO_RELEASE"])
 
 # Collection of sources required to complete build
 sources = [
-    GitSource("https://github.com/cvanaret/Uno.git", ENV["UNO_COMMIT"])
+    GitSource("https://github.com/amontoison/Uno.git", ENV["UNO_COMMIT"])
 ]
 
 # Bash recipe for building across all platforms
