@@ -49,7 +49,7 @@ for (platform, libdir, ext) in platforms
 
       # Copy the license of each dependency
       for folder in readdir("products/$platform/deps/licenses")
-        if readdir(folder) != String[]
+        if readdir("products/$platform/deps/licenses/$folder") != String[]
           cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder")
         end
       end
