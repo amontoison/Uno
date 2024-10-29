@@ -118,7 +118,7 @@ install -v -m 755 "uno_ampl${exeext}" -t "${bindir}"
 # We just check that we can generate it, but we don't include it in the tarballs.
 ${CXX} -shared $(flagon -Wl,--whole-archive) libuno.a $(flagon -Wl,--no-whole-archive) -o libuno.${dlext} -L${libdir} -l${OMP} -lopenblas -ldmumps -lmetis -lhsl
 cp libuno.a ${prefix}/lib/libuno.a
-cp libuno.${dlext} "${libdir}/libuno.${dlext}
+cp libuno.${dlext} ${libdir}/libuno.${dlext}
 """
 
 # These are the platforms we will build for by default, unless further
