@@ -31,7 +31,9 @@ for (platform, libdir, ext) in platforms
       run(`tar -xzf products/$platform/deps.tar.gz -C products/$platform`)
 
       # Copy the license of each dependency
+      display("products/$platform/deps/licenses" |> readdir)
       for folder in readdir("products/$platform/deps/licenses")
+        dipslay(folder)
         cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder")
       end
       rm("products/$platform/deps/licenses", recursive=true)
