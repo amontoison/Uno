@@ -33,7 +33,8 @@ for (platform, libdir, ext) in platforms
       # Copy the license of each dependency
       display("products/$platform/deps/licenses" |> readdir)
       for folder in readdir("products/$platform/deps/licenses")
-        dipslay(folder)
+        display(folder)
+        display("products/$platform/deps/licenses/$folder" |> readdir)
         cp("products/$platform/deps/licenses/$folder", "products/$platform/share/licenses/$folder")
       end
       rm("products/$platform/deps/licenses", recursive=true)
